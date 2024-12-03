@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="../../../image/logo.png" alt="sanbercode" />
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./form.html">Register</a></li>
+          <li><a href="./article.html">Article</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Register Akun Baru</h1>
+      <h3>Isilah form dibawah ini</h3>
+      <form action="process.html" method="post">
+        <label for="firstName">First Name: </label><br />
+        <input type="text" id="firstName" /><br />
+        <label for="lastName">Last Name: </label><br />
+        <input type="text" id="lastName" /><br />
+        <label for="gender">gender: </label><br />
+        <input type="radio" name="gender" id="male" />
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" />
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="other" />
+        <label for="other">Other</label><br />
+        <label for="negara">Nationality: </label><br />
+        <select name="negara" id="negara">
+          <option value="1">Indonesian</option>
+          <option value="2">Japanese</option></select
+        ><br />
+        <label for="study">Sedang Fokus Belajar: </label><br />
+        <select name="study" id="study">
+          <option value="1">Reactjs</option>
+          <option value="2">Laravel</option></select
+        ><br />
+        <label for="language">Language Spoken: </label><br />
+        <input type="radio" name="language" id="Lmale" />
+        <label for="Lmale">Male</label>
+        <input type="radio" name="language" id="Lfemale" />
+        <label for="Lfemale">Female</label>
+        <input type="radio" name="language" id="Lother" />
+        <label for="Lother">Other</label><br />
+        <label for="desk">Deskripsi Diri Saya: </label><br />
+        <textarea name="desk" id="desk" cols="30" rows="5"></textarea><br />
+        <input type="submit" />
+      </form>
+    </main>
+    <footer>
+      <p>copyright &copy; 2023 by Sanbercode</p>
+    </footer>
+  </body>
+</html>
