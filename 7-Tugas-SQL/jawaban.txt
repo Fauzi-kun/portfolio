@@ -1,0 +1,24 @@
+soal 1 :
+CREATE DATABASE myshop;
+
+soal 2 :
+CREATE TABLE users( id int PRIMARY KEY AUTO_INCREMENT, name varchar(255), email varchar(255), password varchar(255));
+CREATE TABLE categories( id int AUTO_INCREMENT PRIMARY KEY, name varchar(255));
+CREATE TABLE items( id int AUTO_INCREMENT PRIMARY KEY, name varchar(255), description varchar(255), price int, stock int, category_id int, FOREIGN KEY(category_id) REFERENCES categories(id));
+
+soal 3 :
+INSERT INTO users(name,email,password) VALUES ("john doe","ohn@doe.com","john123"), ("jane doe","jane@doe.com","jenita123");
+INSERT INTO categories(name) VALUES ("gadget"),("cloth"),("men"),("women"),("branded");
+INSERT INTO items(name,description,price,stock,category_id) VALUES("Sumsang b50","hape keren dari merek sumsang",4000000,100,1),("Uniklooh","baju keren dari brand ternama",500000,50,2),("IMHO Watch","jam tangan anak yang jujur banget",2000000,10,1);
+
+soal 4 :
+a:
+SELECT id,name,email FROM users;
+b:
+SELECT * FROM items WHERE price > 1000000;
+SELECT * FROM items WHERE name LIKE "%watch%";
+c:
+SELECT items.name,items.description,items.price,items.stock,items.category_id, categories.name AS kategori FROM items INNER JOIN categories ON items.category_id = categories.id;
+
+soal 5 :
+UPDATE items SET price = 2500000 WHERE name = "sumsang b50";
