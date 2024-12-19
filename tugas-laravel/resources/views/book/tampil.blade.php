@@ -22,9 +22,14 @@ Halaman Tampil Buku
             <td>{{$item->title}}</td>
             <td>{{$item->author}}</td>
             <td>
+                <form action="/book/{{$item->id}}" method="POST">
+                @method("delete")
+                @csrf
                 <a href="/book/{{$item->id}}" class="btn btn-sm btn-info">Detail</a>
                 <a href="/book/{{$item->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
-
+                <input type="submit" value="delete" class="btn btn-sm btn-danger">
+                </form>
+              
             </td>
           </tr>
         @empty
