@@ -32,7 +32,7 @@ class CastController extends Controller
             'age' => 'required',
             'bio' => 'required',
         ],[
-            'required' => 'harus di isi',
+            'required' => 'harus di isi ya',
             'min' => 'kurang',
         ]);
 

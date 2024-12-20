@@ -45,6 +45,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ],[
+            'required' => 'input :attribute harus terisi',
+        ]);
+
         $credentials = request(['email','password']);
 
         if(!$token = auth()->attempt($credentials)) {
@@ -55,7 +62,8 @@ class AuthController extends Controller
 
         return response([
             'message'=> 'User berhasil login',
-            'user'=> $userData
+            'user'=> $userData,
+            'token'=> $token
         ],200);
     }
     
