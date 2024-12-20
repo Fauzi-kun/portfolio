@@ -55,7 +55,7 @@ class CastController extends Controller
      */
     public function show(string $id)
     {
-        $cast = cast::find($id);
+        $cast = cast::get($id);
         if(!$cast){
             return response([
                 "message" => "Data tidak ditemukan"

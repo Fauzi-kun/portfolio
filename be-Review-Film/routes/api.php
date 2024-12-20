@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CastController;
 use App\Http\Controllers\API\MovieController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Route::prefix('v1')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
         Route::get('/me', [AuthController::class, 'me'])->middleware('auth:api');
 });
+    Route::apiResource('role', RoleController::class);
 });
