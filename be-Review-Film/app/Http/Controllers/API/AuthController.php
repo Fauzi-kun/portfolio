@@ -24,9 +24,10 @@ class AuthController extends Controller
             'unique'=>'email sudah terdaftar',
             'confirmed'=>'password harus sama',
         ]);
-        $user = new User();
-
+       
         $roleUser = Roles::where('name','user')->first();
+
+        $user = new User();
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -44,16 +45,34 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
- //
+        $credentials = request(['email','password']);
+
+        if(!$token = auth()->attempt($credentials)) {
+            return response()->json(['error'=>'User Invalid'],400);
+        }
+
+        $userData = User::where('email', $credentials['email'])->first();
+
+        return response([
+            'message'=> 'User berhasil login',
+            'user'=> $userData
+        ],200);
     }
     
 
     public function logout()
     {
-      // code
+      auth()->logout();
+      return response()->json([
+        'message'=> 'Logout Berhasil'
+      ]);
     }
     public function me()
     {
-        //code
+        $user = auth()->user();
+        return response()->json([
+            'message'=> 'Profile berhasil ditampilkan',
+            'user'=> $user,
+        ],200);
     }
 }
