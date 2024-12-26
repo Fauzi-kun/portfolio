@@ -15,7 +15,7 @@ class MovieController extends Controller
     {
         $movies = Movie::get();
         return response([
-            "message"=> "berhasil tampil movie",
+            "message"=> "Data berhasil ditampilkan",
             "data"=> $movies
         ],201);
     }
@@ -50,7 +50,7 @@ class MovieController extends Controller
         $movie->save();
 
         return response([
-            'message'=>'berhasil tambah movie'
+            'message'=>'Data berhasil ditambahkan'
         ],200);
     }
 
@@ -61,7 +61,7 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
         return response([
-            'message'=> 'Berhasil tampil detail movie',
+            'message'=> 'Data Detail ditampilkan',
             'data'=> $movie
         ],201);
     }
@@ -95,7 +95,7 @@ class MovieController extends Controller
 
         $movie->save();
         return response([
-            'message'=> 'Berhasil update movie',
+            'message'=> 'Data Berhasil diupdate',
             'data'=> $movie
         ],201);
  

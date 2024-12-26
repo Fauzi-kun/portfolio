@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Carbon\Carbon;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -40,6 +41,31 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public static function boot(){
+        parent::boot();
+
+        static::created(function($model){
+            $model->generate_otp();
+        });
+    }
+
+    public function generate_otp(){
+        do{
+            $randomNumber = mt_rand(100000,999999);
+            $check = OtpCode::where("otp", $randomNumber)->first();
+        }while($check);
+
+        $now = Carbon::now();
+
+        $otp_code = OtpCode::updateOrCreate(
+            ['user_id'=> $this->id],
+            [
+                'otp'=> $randomNumber,
+                'valid_until' => $now->addMinutes(5)
+            ]
+            );
+    }
     protected $fillable = [
         'name',
         'email',
@@ -66,4 +92,8 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function otpdata(){
+        return $this->hasOne(OtpCode::class,'user_id');
+    }
 }
